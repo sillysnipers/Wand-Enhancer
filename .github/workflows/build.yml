@@ -47,8 +47,12 @@ jobs:
           path: WandEnhancer/bin/Release/WandEnhancer.exe
           if-no-files-found: error
 
+          
       # The published artifact is always the offline build; this only proves the
       # opt-in variant still compiles and passes its checks on every push.
       - name: Verify opt-in update notifications build
         shell: pwsh
         run: ./build.ps1 -Configuration Release -EnableUpdateNotifications
+
+        actions/upload-artifact
+        
